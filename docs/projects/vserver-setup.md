@@ -39,12 +39,12 @@ cat ~/.ssh/id_ed25519.pub
 To create an additional key in a custom directory:
 ```bash
 mkdir -p ~/.ssh/my-server
-ssh-keygen -t ed25519 -f ~/.ssh/my-server/server_ed25519
+ssh-keygen -t ed25519 -f ~/.ssh/<my-server>/server_ed25519
 ```
 
 Read the new public key:
 ```bash
-cat ~/.ssh/my-server/server_ed25519.pub
+cat ~/.ssh/<my-server>/server_ed25519.pub
 ```
 
 ---
@@ -53,7 +53,7 @@ cat ~/.ssh/my-server/server_ed25519.pub
 
 If your public key was registered during server creation (e.g. via your hosting provider's dashboard), you can log in directly:
 ```bash
-ssh root@<server-ip>
+ssh <root>@<server-ip>
 ```
 
 ---
@@ -62,7 +62,7 @@ ssh root@<server-ip>
 
 If the server was set up with password login (which is common with some providers), you need to manually register your public key. Run the following command from your **local machine** (not from within the server session):
 ```bash
-ssh-copy-id -i ~/.ssh/my-server/server_ed25519.pub username@<server-ip>
+ssh-copy-id -i ~/.ssh/<my-server>/server_ed25519.pub <username>@<server-ip>
 ```
 
 This command:
@@ -72,7 +72,7 @@ This command:
 
 After this, you can log in without a password:
 ```bash
-ssh -i ~/.ssh/my-server/server_ed25519 username@<server-ip>
+ssh -i ~/.ssh/<my-server>/server_ed25519 <username>@<server-ip>
 ```
 
 ---
@@ -96,13 +96,14 @@ Then restart the SSH service to apply the changes:
 sudo systemctl restart ssh
 ```
 
-> ⚠️ **Important:** Make sure your SSH key login works before disabling password login, or you may lock yourself out.
+> [!IMPORTANT]   
+> Make sure your SSH key login works before disabling password login, or you may lock yourself out.
 
 ### Verifying Password Login is Disabled
 
 To confirm that password login is actually disabled, run the following command from your local machine:
 ```bash
-ssh -o PubkeyAuthentication=no username@<server-ip>
+ssh -o PubkeyAuthentication=no <username>@<server-ip>
 ```
 
 If you see `Permission denied (publickey)` without being prompted for a password, password login is successfully disabled.
@@ -225,7 +226,7 @@ With this, `ssh <server-ip>` is sufficient to connect.
 
 **Using a custom alias instead:**
 ```
-Host my-server
+Host <my-server>
     HostName <server-ip>
     User username
     PreferredAuthentications publickey
@@ -234,7 +235,7 @@ Host my-server
 
 Now you can simply run:
 ```bash
-ssh my-server
+ssh <my-server>
 ```
 
 ---
@@ -245,7 +246,7 @@ To enable the server to communicate directly with GitHub (e.g. for cloning priva
 
 **1. Log in to the server and generate an SSH key:**
 ```bash
-ssh my-server
+ssh <my-server>
 ssh-keygen -t ed25519 -C "your-email@example.com"
 ```
 
