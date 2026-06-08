@@ -2,7 +2,7 @@
 
 A developer portfolio and learning blog built with Docusaurus.
 
-## TOC
+## Table of Contents
 
 - [Prerequisites](#prerequisites)
 - [Quickstart](#quickstart)
@@ -16,8 +16,8 @@ A developer portfolio and learning blog built with Docusaurus.
 
 ## Quickstart
 
-1. Clone repository
-2. Copy `example.env` to `.env` and fill in your values
+1. Clone repository: `git clone https://github.com/Developer-Akademie-DevSecOpsKurs/dev-blog-template`
+2. Copy `example.env` to `.env` and fill in required environment variables
 3. Install dependencies with `pnpm install`
 4. Start local development with `pnpm start`
 5. Test production build with `pnpm build`
@@ -39,21 +39,23 @@ The main focus of the configuration was:
 The setup was performed in several steps:
 
 1. **Project initialization**
-   - Created Docusaurus project from template
+   - Created Docusaurus project from the provided template
    - Installed dependencies using pnpm
 
 2. **Environment configuration**
-   - Added `.env` variables for repository and deployment settings
-   - Introduced fallback values in `docusaurus.config.ts`
+   - Added `GIT_REPOSITORY_URL` to `example.env`
+   - Created a configuration variable in `docusaurus.config.ts` that reads the environment variable and provides a fallback value
 
 3. **Docusaurus configuration**
-   - Updated `title`, `tagline`, and base `url`
+   - Updated the site branding in `docusaurus.config.ts` (`title`, `tagline`, `url`)
    - Configured repository url dynamically via environment variable
-   - Adjusted navbar and footer structure
-   - Removed unused sections (Community links)
+   - Updated navbar (title, repository link)
+   - Updated footer structure and removed Community section
 
 4. **Deployment setup**
-   - Activated automatic deployment to GitHub Pages on push to main branch
+   - Configured the project for GitHub Pages deployment
+   - Enabled GitHub Pages using GitHub Actions in the repository settings
+   - Automatic deployment is triggered on pushes to `main`
 
 ## Further References
 
