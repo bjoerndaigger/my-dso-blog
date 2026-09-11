@@ -13,7 +13,7 @@ const gitRepositoryUrl =
 
 const config: Config = {
   title: 'My DSO Blog',
-  tagline: "I'm a DevSecOps Enthusiast with a passion for details and efficiency",
+  tagline: "I'm Björn, a fullstack developer moving from application code into infrastructure and security. This site is my open notebook: the projects I build, the concepts I work through and the guides I write so I never have to solve the same problem twice.",
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
@@ -121,9 +121,13 @@ const config: Config = {
               label: 'GitHub',
               href: gitRepositoryUrl,
             },
-             {
+            {
               label: 'Template',
               href: 'https://github.com/spmse/dev-blog-template',
+            },
+            {
+              label: 'Legal Notice',
+              to: '/legal-notice',
             },
           ],
         },
